@@ -24,10 +24,17 @@ public class Practica1 {
 
         do {
 
-            String numero1;
+            String numero1 = "";
             do {
                 System.out.println("\n Introdueix el primer numero. ");
-                numero1 = sc.nextLine();
+               
+                if (sc.hasNextDouble()) {
+                    numero1 = sc.nextLine();
+
+                } else {
+                    sc.nextLine();
+                    System.err.println("Error, el valor introduit no es un numero, torna a probar");
+                }
             } while (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
             double nume1 = Double.parseDouble(numero1);
             double n1 = new Double(numero1);
@@ -43,14 +50,22 @@ public class Practica1 {
                         || operacion.equals("*")) {
                     comprobar = true;
                 } else {
+                    System.out.println("Operació no vàlida, torna a probar.");
                     comprobar = false;
                 }
             } while (comprobar != true);
 
-            String numero2;
+            String numero2 = "";
             do {
                 System.out.println("\n Introdueix el segon numero.");
-                numero2 = sc.nextLine();
+                if (sc.hasNextDouble()) {
+                    numero2 = sc.nextLine();
+
+                } else {
+                    sc.nextLine();
+                    System.err.println("Error, el valor introduit no es un numero, torna a probar");
+                }
+                
             } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
             double nume2 = Double.parseDouble(numero2);
             double n2 = new Double(numero2);
@@ -59,7 +74,7 @@ public class Practica1 {
                 comprobar = true;
                 switch (operacion) {
                     case "+":
-                        res = n2 + n2;
+                        res = n1 + n2;
                         break;
                     case "-":
                         res = n1 - n2;
@@ -81,7 +96,7 @@ public class Practica1 {
                         res = n1 / n2;
                         break;
                     case "*":
-                        res = Math.pow(n1, n1);
+                        res = Math.pow(n1, n2);
                         break;
                     case "%":
                         while (n2 == 0) {
@@ -95,6 +110,8 @@ public class Practica1 {
                         }
                         res = n1 % n2;
                         break;
+                        
+                    
                 }
             } while (comprobar != true);
 
