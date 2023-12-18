@@ -27,7 +27,7 @@ public class Practica1 {
             String numero1 = "";
             do {
                 System.out.println("\n Introdueix el primer numero. ");
-               
+
                 if (sc.hasNextDouble()) {
                     numero1 = sc.nextLine();
 
@@ -43,11 +43,11 @@ public class Practica1 {
                 System.out.println("\n Operació? (Indica el signe)");
                 System.out.println("+ = sumar \n - = restar \n"
                         + " x = multiplicar \n / = dividir \n * = elevar primer num al segon num."
-                        + "\n % = residu");
+                        + "\n % = residu \n comparacion = compara ambos numeros");
                 operacion = sc.nextLine();
                 if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
                         || operacion.equals("X") || operacion.equals("/") || operacion.equals("%")
-                        || operacion.equals("*")) {
+                        || operacion.equals("*") || operacion.equals("comparacion")) {
                     comprobar = true;
                 } else {
                     System.out.println("Operació no vàlida, torna a probar.");
@@ -65,7 +65,7 @@ public class Practica1 {
                     sc.nextLine();
                     System.err.println("Error, el valor introduit no es un numero, torna a probar");
                 }
-                
+
             } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
             double nume2 = Double.parseDouble(numero2);
             double n2 = new Double(numero2);
@@ -110,12 +110,27 @@ public class Practica1 {
                         }
                         res = n1 % n2;
                         break;
-                        
-                    
+                    case "comparacion":
+                        if (n1 > n2) {
+                            System.out.println("El primer numero es mer gran que el segon");
+
+                        } else if (n1 == n2) {
+                            System.out.println("Els dos numeros son iguals");
+
+                        } else {
+                            System.out.println("El primer numero es mes petit que el segon");
+                        }
+
                 }
             } while (comprobar != true);
 
-            System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
+            if (operacion.equals("comparacion")) {
+
+            } else {
+                System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
+
+            }
+
             System.out.println("\n Vols continuar operant? \n");
             System.out.println(" [s/n]");
             do {
